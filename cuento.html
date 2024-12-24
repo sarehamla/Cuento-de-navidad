@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuento Navideño</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+        body {
+            font-family: 'Indie Flower', cursive;
+        }
+        .page {
+            display: none;
+            transition: transform 0.6s ease;
+        }
+        .page.active {
+            display: block;
+            transform: rotateY(0deg);
+        }
+        .page.inactive {
+            transform: rotateY(-180deg);
+        }
+    </style>
+</head>
+<body class="bg-blue-100 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto p-4">
+        <div id="book" class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="page active p-6" id="page1">
+                <img src="1.jpg" alt="Introducción" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Senén y Alma estaban muy emocionados por la Navidad...</p>
+            </div>
+            <div class="page p-6" id="page2">
+                <img src="2.jpg" alt="Deseo navideño" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Una noche, Senén y Alma decidieron escribir sus deseos navideños...</p>
+            </div>
+            <div class="page p-6" id="page3">
+                <img src="3.jpg" alt="Noche mágica" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Finalmente, llegó la noche de Navidad...</p>
+            </div>
+            <div class="page p-6" id="page4">
+                <img src="4.jpg" alt="Aventura de los animales" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Mientras Senén y Alma dormían, Mico, Tigretón y Cásper decidieron explorar...</p>
+            </div>
+            <div class="page p-6" id="page5">
+                <img src="5.jpg" alt="Descubrimiento del regalo" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Después de mucho buscar, Mico, Tigretón y Cásper encontraron un regalo especial...</p>
+            </div>
+            <div class="page p-6" id="page6">
+                <img src="6.jpg" alt="Mañana de Navidad" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">A la mañana siguiente, Senén y Alma se despertaron emocionados...</p>
+            </div>
+            <div class="page p-6" id="page7">
+                <img src="7.jpg" alt="Mensaje de amor" class="w-full h-64 object-cover">
+                <p class="mt-4 text-lg">Senén y Alma abrazaron a Mico, Tigretón y Cásper, agradecidos por tenerlos en sus vidas...</p>
+            </div>
+        </div>
+        <div class="flex justify-between mt-4">
+            <button id="prev" class="bg-blue-500 text-white px-4 py-2 rounded">Anterior</button>
+            <button id="next" class="bg-blue-500 text-white px-4 py-2 rounded">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 7;
+
+        document.getElementById('next').addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                document.getElementById(`page${currentPage}`).classList.remove('active');
+                document.getElementById(`page${currentPage}`).classList.add('inactive');
+                currentPage++;
+                document.getElementById(`page${currentPage}`).classList.remove('inactive');
+                document.getElementById(`page${currentPage}`).classList.add('active');
+            }
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            if (currentPage > 1) {
+                document.getElementById(`page${currentPage}`).classList.remove('active');
+                document.getElementById(`page${currentPage}`).classList.add('inactive');
+                currentPage--;
+                document.getElementById(`page${currentPage}`).classList.remove('inactive');
+                document.getElementById(`page${currentPage}`).classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
